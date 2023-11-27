@@ -1,0 +1,50 @@
+.AddCategory {}
+
+@keyframes color {
+    0% {
+        box-shadow: 0px 0px 3px 3px #33CCCC;
+    }
+    20% {
+        box-shadow: 0px 0px 3px 3px #33CC36;
+    }
+    40% {
+        box-shadow: 0px 0px 3px 3px #B8CC33;
+    }
+    60% {
+        box-shadow: 0px 0px 3px 3px #FCCA00;
+    }
+    80% {
+        box-shadow: 0px 0px 3px 3px #33CC36;
+    }
+    100% {
+        box-shadow: 0px 0px 3px 3px #33CCCC;
+    }
+}
+
+.AddCategory {
+    box-shadow: 0px 0px 3px 3px #33CCCC;
+    /* Fallback */
+    animation: color 9s infinite linear;
+    text-align: center;
+    padding: 2em;
+}
+
+.AddCategory {
+    width: 250px;
+    border: 1px solid;
+    text-align: left;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 3px 3px 3px black;
+    border-radius: 10px;
+}
+
+.AddCategory input,
+.AddCategory button {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+.AddCategory img{
+    width: 225px;
+}

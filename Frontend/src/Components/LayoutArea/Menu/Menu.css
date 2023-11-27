@@ -1,0 +1,24 @@
+.Menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Menu a {
+    font-size: 20px;
+    color: black;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.Menu a:hover {
+    background-color: burlywood;
+}
+
+.Menu > .active{
+    font-weight: bold;
+    background-color: burlywood;
+}

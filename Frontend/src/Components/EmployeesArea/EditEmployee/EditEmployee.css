@@ -1,0 +1,57 @@
+.EditEmployee {
+	width: 300px;
+    margin: 20px auto;
+    text-align: left;
+    border: 2px solid black;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px black;
+}
+.EditEmployee input{
+    width: 95%;
+    margin-right: 3px;
+    margin-left: 3px;
+    background-color: #deb887;
+}
+.EditEmployee input[type="file"]{
+    background-color: transparent;
+    margin: 6px;
+}
+.EditEmployee label{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.EditEmployee button{
+    height: 30px;
+    border-radius: 5px;     
+
+}
+.EditEmployee button:hover{
+    cursor: pointer;
+    background-color: #deb887;
+}
+.EditEmployee .imageContainer{
+    width: 100%;
+    margin: 3px;
+}
+.imageContainer img{
+    width: 225px;
+}
+
+
+@keyframes color {
+0%   { box-shadow: 0px 0px 3px 3px #33CCCC; }
+  20%  { box-shadow: 0px 0px 3px 3px #33CC36; }
+  40%  { box-shadow: 0px 0px 3px 3px #B8CC33; }
+  60%  { box-shadow: 0px 0px 3px 3px #FCCA00; }
+  80%  { box-shadow: 0px 0px 3px 3px #33CC36; }
+  100% { box-shadow: 0px 0px 3px 3px #33CCCC; }
+}
+
+.EditEmployee {
+  box-shadow: 0px 0px 3px 3px #33CCCC; /* Fallback */
+  animation: color 9s infinite linear;
+  text-align: center;
+  padding: 2em;
+}
+

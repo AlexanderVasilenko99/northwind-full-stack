@@ -1,0 +1,37 @@
+.ProductsList {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ProductsList a {
+    color: black;
+    text-decoration: none;
+}
+
+/* .ProductsList>a:nth-of-type(1) { */
+.actions {
+    position: absolute;
+    right: 10px;
+    top: 50px;
+
+}
+
+/* .actions > * {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid;
+    line-height: 50px;
+    font-size: x-large;
+    font-weight: bold;
+} */
+.actions img {
+    width: 50px;
+}
+
+/* .ProductsList>a:nth-of-type(1):hover {
+    background-color: #8DB596;
+} */

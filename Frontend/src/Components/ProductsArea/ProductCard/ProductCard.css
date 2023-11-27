@@ -1,0 +1,30 @@
+.ProductCard {
+    width: 300px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    background-image: linear-gradient(270deg, bisque, white);
+    text-align: left;
+
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    transition: all 150ms ease-out;
+}
+
+.ProductCard:hover {
+    box-shadow: 0 0 10px black;
+}
+
+.ProductCard>div {
+    display: inline-block;
+}
+
+.ProductCard img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}

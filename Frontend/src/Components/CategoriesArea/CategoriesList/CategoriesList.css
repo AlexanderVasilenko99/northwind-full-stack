@@ -1,0 +1,28 @@
+.CategoriesList {
+	
+}
+.CategoriesList a{
+    text-decoration: none;
+}
+
+.CategoriesList .actions {
+    position: absolute;
+    right: 10px;
+    top: 50px;
+
+}
+.CategoriesList .actions img{
+    width: 50px;
+}
+
+.CategoriesList table{
+    width: 100%;
+}
+
+
+.CategoriesList td{
+    margin: auto;
+}
+.CategoriesList img{
+    width: 100px;
+}

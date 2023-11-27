@@ -1,0 +1,10 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  text-align: center;
+  background-image: linear-gradient(180deg, bisque, burlywood);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
