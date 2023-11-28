@@ -35,7 +35,7 @@ function EmployeeDetails(): JSX.Element {
     return (
 
         <div key={feEmployee?.id} className="EmployeeCard">
-            <img src={appConfig.employeesUrl + `images/${feEmployee?.imageName}/`} alt="" />
+            <img src={appConfig.employeesUrl + feEmployee?.imageName} alt="" />
             ID: {feEmployee?.id} <br />
             Full name: {feEmployee?.firstName} {feEmployee?.lastName} <br />
             Position: {feEmployee?.title} <br />

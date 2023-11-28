@@ -3,7 +3,7 @@ import appConfig from "../2-utils/app-config";
 import dal from "../2-utils/dal";
 import EmployeeModel from "../3-models/employee-model";
 import { ResourceNotFound } from "../3-models/error-models";
-import {fileSaver} from "uploaded-file-saver"
+import { fileSaver } from "uploaded-file-saver"
 class EmployeeService {
 
     public async getAllEmployees(): Promise<EmployeeModel[]> {
@@ -13,7 +13,8 @@ class EmployeeService {
                         LastName as lastName,
                         DATE(BirthDate) as birthDate,
                         Country as country,
-                        City as city
+                        City as city,
+                        ImageName as imageName
                     FROM employees`;
         const employees = await dal.execute(sql);
         return employees;
@@ -26,7 +27,8 @@ class EmployeeService {
                         LastName as lastName,
                         DATE(BirthDate) as birthDate,
                         Country as country,
-                        City as city
+                        City as city,
+                        ImageName as imageName
                     FROM employees
                     WHERE EmployeeID = ${id}`;
         const employee = await dal.execute(sql);
@@ -63,7 +65,12 @@ class EmployeeService {
         const existingImageName = await this.getExistingImageName(employee.employeeID);
         employee.imageUrl = existingImageName;
         employee.editEmployeeValidate();
-        const newImageName = await fileSaver.update(existingImageName,employee.image);
+        console.log("passed validation");
+
+        let newImageName;
+        if (employee.image) {
+            newImageName = await fileSaver.update(existingImageName, employee.image);
+        }
         employee.imageUrl = employee.image ? newImageName : existingImageName;
 
 
@@ -71,6 +78,8 @@ class EmployeeService {
         const d = bday.getDate();
         const m = bday.getMonth();
         const y = bday.getFullYear();
+
+        console.log(employee);
 
         const sql = `UPDATE employees SET
                         LastName = '${employee.lastName}',
@@ -82,8 +91,11 @@ class EmployeeService {
                     WHERE EmployeeID = ${employee.employeeID}`;
 
         const info: OkPacket = await dal.execute(sql);
+
         delete employee.image;
-        fileSaver.delete(existingImageName)
+        if (employee.image) {
+            fileSaver.delete(existingImageName)
+        }
         if (info.affectedRows === 0) throw new ResourceNotFound(employee.employeeID);
         return employee;
     }
@@ -92,10 +104,10 @@ class EmployeeService {
         const sql = `SELECT ImageName FROM employees WHERE EmployeeID = ${id}`;
         const employees = await dal.execute(sql);
 
-        const employee = employees[0];
+        const employee = employees[0].ImageName;
 
         if (!employee) return "";
-        return employee.ImageName;
+        return employee;
     }
 
     public async deleteEmployee(id: number): Promise<void> {

@@ -28,8 +28,7 @@ function EditEmployee(): JSX.Element {
                 setValue("country", e.country);
                 setValue("city", e.city);
                 setValue("birthDate", e.birthDate);
-                setImgSrc(appConfig.employeesUrl + `images/${e.imageName}`)
-
+                setImgSrc(appConfig.employeesUrl + e.imageName)
             })
             .catch((err) => NotificationService.error(err))
     }, []);

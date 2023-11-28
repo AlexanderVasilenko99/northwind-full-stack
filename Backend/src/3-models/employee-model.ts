@@ -26,7 +26,7 @@ class EmployeeModel {
         firstName: Joi.string().required().max(10).min(2),
         lastName: Joi.string().required().max(20).min(2),
         birthDate: Joi.date().required(),
-        country: Joi.string().required().max(15).min(3),
+        country: Joi.string().required().max(15).min(2),
         city: Joi.string().required().max(15).min(2),
         image: Joi.object().required(),
         imageUrl: Joi.string().optional().min(2).max(200)
@@ -36,7 +36,7 @@ class EmployeeModel {
         firstName: Joi.string().required().max(10).min(2),
         lastName: Joi.string().required().max(20).min(2),
         birthDate: Joi.date().required(),
-        country: Joi.string().required().max(15).min(3),
+        country: Joi.string().required().max(15).min(2),
         city: Joi.string().required().max(15).min(2),
         image: Joi.object().optional(),
         imageUrl: Joi.string().required().min(2).max(200)

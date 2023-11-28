@@ -36,7 +36,7 @@ function EmployeesList(): JSX.Element {
             {feEmployees?.map((e) =>
                 <NavLink key={e?.id} to={`employee/${e?.id}`}>
                     <div key={e?.id} className="EmployeeCard">
-                        <img src={Utils.employeesUrl + `images/${e?.imageName}/`} alt="" />
+                        <img src={Utils.employeesUrl + e?.imageName} alt="" />
                         ID: {e?.id} <br />
                         Full name: {e.firstName} {e?.lastName} <br />
                         Position: {e?.title} <br />

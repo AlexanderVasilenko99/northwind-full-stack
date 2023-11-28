@@ -45,6 +45,8 @@ class EmployeeService {
 
     public async updateEmployee(employee: Employee): Promise<Employee> {
         const options = { headers: { "Content-Type": "multipart/form-data" } }
+        console.log(employee);
+        
         const response = await axios.put(appConfig.employeesUrl + employee.id, employee, options);
 
         const updateEmployee = response.data;
@@ -60,6 +62,8 @@ class EmployeeService {
 
         const response = await axios.get(appConfig.employeesUrl + id);
         const employee = response.data;
+        console.log(employee);
+        
         return employee;
     }
 }
