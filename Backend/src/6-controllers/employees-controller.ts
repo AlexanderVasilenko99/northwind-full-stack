@@ -3,6 +3,8 @@ import employeeService from "../5-services/employee-service";
 import StatusCode from "../3-models/status-codes";
 import EmployeeModel from "../3-models/employee-model";
 import path from "path"
+import verifyToken from "../4-middleware/verifyToken";
+import verifyAdmin from "../4-middleware/verifyAdmin";
 const router = express.Router();
 
 // GET https://localhost:4000/api/employees
@@ -23,7 +25,7 @@ router.get("/employees/:id([0-9]+)", async (request: Request, response: Response
         next(err);
     }
 })
-router.post("/employees", async (request: Request, response: Response, next: NextFunction) => {
+router.post("/employees",verifyToken, async (request: Request, response: Response, next: NextFunction) => {
     try {
         request.body.id = +request.params.id;
         request.body.image = request.files?.image;
@@ -35,7 +37,7 @@ router.post("/employees", async (request: Request, response: Response, next: Nex
         next(err);
     }
 })
-router.put("/employees/:id([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
+router.put("/employees/:id([0-9]+)",verifyToken, async (request: Request, response: Response, next: NextFunction) => {
     try {
         request.body.employeeID = +request.params.id;
         request.body.image = request.files?.image;
@@ -47,7 +49,7 @@ router.put("/employees/:id([0-9]+)", async (request: Request, response: Response
         next(err);
     }
 })
-router.delete("/employees/:id([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
+router.delete("/employees/:id([0-9]+)",verifyAdmin, async (request: Request, response: Response, next: NextFunction) => {
     try {
         const id = +request.params.id;
 
