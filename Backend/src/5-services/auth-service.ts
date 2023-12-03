@@ -29,10 +29,10 @@ class AuthService {
 
 
         // Create sql:
-        const sql = `INSERT INTO users(firstName, lastName, email, password, roleId)
-                     VALUES('${user.firstName}','${user.lastName}','${user.email}','${user.password}', ${user.roleId})`;
+        const sql = `INSERT INTO users(firstName, lastName, email, password, roleId) VALUES(?,?,?,?,?)`;
         //save user:
-        const info: OkPacket = await dal.execute(sql);
+        const info: OkPacket = await dal.execute(sql, [user.firstName, user.lastName, user.email, user.password, user.roleId]);
+
         // Add id to user
         user.id = info.insertId
         // Create token for user:
@@ -48,12 +48,10 @@ class AuthService {
         credentials.password = cyber.hashPassword(credentials.password);
 
         // Create sql:
-        const sql = `SELECT * FROM users
-                    WHERE email = '${credentials.email}' AND
-                    password = '${credentials.password}'`;
+        const sql = `SELECT * FROM users WHERE email = ? AND password = ?`;
 
 
-        const users = await dal.execute(sql);
+        const users = await dal.execute(sql,[credentials.email,credentials.password]);
 
         // getSingleUser
         const user = users[0];

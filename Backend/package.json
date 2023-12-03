@@ -23,6 +23,7 @@
     "joi": "^17.11.0",
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",
+    "striptags": "^3.2.0",
     "uploaded-file-saver": "^1.0.0"
   }
 }

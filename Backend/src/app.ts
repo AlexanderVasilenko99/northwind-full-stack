@@ -10,6 +10,7 @@ import authController from "./6-controllers/auth-controller";
 import expressFileUpload from "express-fileupload"
 import cors from "cors";
 import activities from "./4-middleware/activities";
+import sanitize from "./4-middleware/sanitize";
 
 
 // creating the server
@@ -25,6 +26,9 @@ server.use(express.json());
 
 // log every activity
 server.use(activities);
+
+// sanitize
+server.use(sanitize);
 
 // create a request.files obj containing the request body data
 server.use(expressFileUpload());

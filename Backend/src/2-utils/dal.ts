@@ -8,9 +8,9 @@ const connection = mysql.createPool({
     password: appConfig.mysqlPassword,  // database password
     database: appConfig.mysqlDatabase   //database name
 });
-function execute(sql: string): Promise<any> { //promisify
+function execute(sql: string, values?: any[]): Promise<any> { //promisify
     return new Promise<any>((resolve, reject) => {
-        connection.query(sql, (err: MysqlError, result: any) => {
+        connection.query(sql, values, (err: MysqlError, result: any) => {
             if (err) {
                 reject(err);
                 return;
