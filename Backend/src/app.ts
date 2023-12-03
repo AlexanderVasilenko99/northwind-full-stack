@@ -9,6 +9,9 @@ import path from "path"
 import authController from "./6-controllers/auth-controller";
 import expressFileUpload from "express-fileupload"
 import cors from "cors";
+import activities from "./4-middleware/activities";
+
+
 // creating the server
 const server = express();
 server.use(cors())
@@ -17,6 +20,9 @@ fileSaver.config(path.join(__dirname, "1-assets", "images"));
 
 // creating a request body obj containing the request body data
 server.use(express.json());
+
+// log every activity
+server.use(activities);
 
 // create a request.files obj containing the request body data
 server.use(expressFileUpload());
