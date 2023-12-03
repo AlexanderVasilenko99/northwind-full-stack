@@ -15,6 +15,9 @@ class Cyber {
         // creating a token
         const token = jwt.sign(container, this.secretKey, options)
 
+        // never return password to frontend
+        delete user.password;
+
         return token;
     }
 
