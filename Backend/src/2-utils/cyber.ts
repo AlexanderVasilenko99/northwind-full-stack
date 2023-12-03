@@ -2,8 +2,19 @@ import { Forbidden, Unauthorized } from "../3-models/error-models";
 import UserModel from "../3-models/user-model";
 import jwt from "jsonwebtoken"
 import RoleModel from "../3-models/role-model";
+import crypto from "crypto"
 
 class Cyber {
+    public hashPassword(plainText: string): string {
+        if (!plainText) return null;
+        const salt = "this_is_my_salt";
+
+        // const hashPassword = crypto.createHash("sha512").update(plainText).digest("hex");
+        const hashPassword = crypto.createHmac("sha512",salt).update(plainText).digest("hex");
+
+
+        return hashPassword;
+    }
     private secretKey = "myverysecretsecretkey"
     public getNewToken(user: UserModel): string {
         // containing the user inside a container obj
@@ -35,7 +46,7 @@ class Cyber {
         const container = jwt.verify(token, this.secretKey) as { user: UserModel };
         // extract user from container
         const user = container.user;
-        if(user.roleId !== RoleModel.Admin) throw new Forbidden("You are not administrator")
+        if (user.roleId !== RoleModel.Admin) throw new Forbidden("You are not administrator")
     }
 
 
