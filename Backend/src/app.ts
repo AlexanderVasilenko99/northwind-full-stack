@@ -14,7 +14,9 @@ import activities from "./4-middleware/activities";
 
 // creating the server
 const server = express();
-server.use(cors())
+if (appConfig.isDevelopment) server.use(cors());
+else server.use(cors({ origin: "" }))
+
 // set the images folder for the fileSaver library
 fileSaver.config(path.join(__dirname, "1-assets", "images"));
 
