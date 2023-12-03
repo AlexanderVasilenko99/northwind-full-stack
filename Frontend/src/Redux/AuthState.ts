@@ -13,7 +13,7 @@ export class AuthState {
     public token: string = null;
 
     constructor() {
-        this.token = localStorage.getItem("token");
+        this.token = sessionStorage.getItem("token");
         if (this.token) {
             this.user = jwtDecode<{ user: UserModel }>(this.token).user;
         }
@@ -32,7 +32,7 @@ export interface AuthAction {
 }
 function AuthReducer(currentState = new AuthState(), action: AuthAction): AuthState {
     let newState = { ...currentState };
-    localStorage.setItem(`token`, newState.token);
+    sessionStorage.setItem(`token`, newState.token);
 
     switch (action.type) {
         case AuthActionTypes.Register:
@@ -40,13 +40,13 @@ function AuthReducer(currentState = new AuthState(), action: AuthAction): AuthSt
 
             newState.user = jwtDecode<{ user: UserModel }>(action.payload).user
             newState.token = action.payload;
-            localStorage.setItem(`token`, newState.token);
+            sessionStorage.setItem(`token`, newState.token);
             break;
             
         case AuthActionTypes.Logout:
             newState.user = null;
             newState.token = null;
-            localStorage.removeItem(`token`);
+            sessionStorage.removeItem(`token`);
             break;
     }
 
